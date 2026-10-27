@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import "@fontsource-variable/heebo";
+@import "@fontsource-variable/assistant";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Fonts */
+  --font-heading: "Heebo Variable", sans-serif;
+  --font-sans: "Assistant Variable", sans-serif;
+
+  /* Brand colors */
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-coral: var(--brand-coral);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-gold: var(--brand-gold);
+
+  /* shadcn colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Official "מה נסגר?" palette */
+  --brand-teal: #167F83;
+  --brand-coral: #F17876;
+  --brand-pink: #F7D9D7;
+  --brand-gold: #F6B84B;
+
+  /* General */
+  --background: #F8F9FA;
+  --foreground: #263536;
+
+  /* Cards */
+  --card: #FFFFFF;
+  --card-foreground: #263536;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #263536;
+
+  /* Primary = turquoise */
+  --primary: #167F83;
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary = powder pink */
+  --secondary: #F7D9D7;
+  --secondary-foreground: #583B3B;
+
+  /* Quiet areas */
+  --muted: #F2F4F4;
+  --muted-foreground: #657576;
+
+  /* Accent = coral */
+  --accent: #F17876;
+  --accent-foreground: #3F2020;
+
+  /* Errors */
+  --destructive: #DC3545;
+
+  /* Inputs / borders */
+  --border: #E2E8E8;
+  --input: #D8E1E1;
+  --ring: #167F83;
+
+  /*
+   * Statistics
+   * Distinct colors on purpose.
+   */
+  --chart-1: #167F83;
+  --chart-2: #F17876;
+  --chart-3: #F6B84B;
+  --chart-4: #8170B2;
+  --chart-5: #4C91C7;
+
+  /* Rounded, but not childish */
+  --radius: 0.875rem;
+
+  /* Sidebar */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #263536;
+  --sidebar-primary: #167F83;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F7D9D7;
+  --sidebar-accent-foreground: #583B3B;
+  --sidebar-border: #E2E8E8;
+  --sidebar-ring: #167F83;
+}
+
+.dark {
+  --background: #102526;
+  --foreground: #F8F9FA;
+
+  --card: #173234;
+  --card-foreground: #F8F9FA;
+
+  --popover: #173234;
+  --popover-foreground: #F8F9FA;
+
+  --primary: #64B9BB;
+  --primary-foreground: #102526;
+
+  --secondary: #533638;
+  --secondary-foreground: #FFEDEC;
+
+  --muted: #203B3D;
+  --muted-foreground: #B8C8C9;
+
+  --accent: #F17876;
+  --accent-foreground: #291414;
+
+  --destructive: #FF6B70;
+
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 16%);
+  --ring: #64B9BB;
+
+  --chart-1: #64B9BB;
+  --chart-2: #F58E8B;
+  --chart-3: #F9C968;
+  --chart-4: #A899D0;
+  --chart-5: #76B2DE;
+
+  --sidebar: #173234;
+  --sidebar-foreground: #F8F9FA;
+  --sidebar-primary: #64B9BB;
+  --sidebar-primary-foreground: #102526;
+  --sidebar-accent: #203B3D;
+  --sidebar-accent-foreground: #F8F9FA;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: #64B9BB;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+@keyframes wedding-pop {
+  0% {
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.03) translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.wedding-popup-card {
+  animation: wedding-pop 450ms ease-out;
+}
+/* Hebrew Date Picker */
+.rdp-root {
+  --rdp-accent-color: #167F83;
+  --rdp-accent-background-color: #DDF2F0;
+  --rdp-today-color: #F17876;
+}
+
+.rdp-root .rdp-chevron {
+  fill: #167F83;
+}
+
+.rdp-root .rdp-day_button {
+  border-radius: 50%;
+}
+
+.rdp-root .rdp-selected .rdp-day_button {
+  background-color: #167F83;
+  color: white;
+  border-color: #167F83;
+}
+/* התאריך של היום */
+.rdp-root .rdp-today:not(.rdp-selected) .rdp-day_button {
+  color: #F17876 !important;
+  border-color: #F17876 !important;
+}
+
+/* תאריך שנבחר */
+.rdp-root .rdp-selected .rdp-day_button {
+  background-color: #167F83 !important;
+  color: white !important;
+  border-color: #167F83 !important;
+}

@@ -1,0 +1,56 @@
+@baseUrl = http://localhost:5095
+@token = PASTE_TOKEN_HERE
+@groupId = PASTE_GROUP_ID_HERE
+
+### Register
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test User",
+  "email": "test@example.com",
+  "password": "Password123!"
+}
+
+### Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!"
+}
+
+### Create group
+POST {{baseUrl}}/api/groups
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "מחזור תשפ״ו"
+}
+
+### Get brides
+GET {{baseUrl}}/api/groups/{{groupId}}/brides
+Authorization: Bearer {{token}}
+
+### Add bride
+POST {{baseUrl}}/api/groups/{{groupId}}/brides
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "שרה כהן",
+  "className": "י״ג 1",
+  "specialization": "תוכנה",
+  "status": "מאורסת",
+  "yeshiva": "מיר",
+  "weddingDate": null,
+  "weddingTime": null,
+  "weddingHall": null,
+  "weddingCity": null
+}
+
+### Statistics
+GET {{baseUrl}}/api/groups/{{groupId}}/statistics
+Authorization: Bearer {{token}}
