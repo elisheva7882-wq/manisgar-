@@ -290,32 +290,6 @@ namespace BeSmachot.Server.Migrations
                     b.ToTable("GroupYeshivas");
                 });
 
-            modelBuilder.Entity("BeSmachot.Server.Models.RefreshToken", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("ExpiresAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsRevoked")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RefreshTokens");
-                });
-
             modelBuilder.Entity("BeSmachot.Server.Models.Blessing", b =>
                 {
                     b.HasOne("BeSmachot.Server.Models.Bride", "Bride")
@@ -411,17 +385,6 @@ namespace BeSmachot.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Group");
-                });
-
-            modelBuilder.Entity("BeSmachot.Server.Models.RefreshToken", b =>
-                {
-                    b.HasOne("BeSmachot.Server.Models.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BeSmachot.Server.Models.AppUser", b =>
