@@ -69,8 +69,22 @@ public class BridesController(AppDbContext db, IGroupAccessService access) : Con
         if (!classExists)
             return BadRequest(new { message = "The selected class does not exist in this group." });
 
-        var specializationExists = await db.GroupSpecializations.AnyAsync(
-            x => x.GroupId == groupId && x.Name == specialization, ct);
+
+            var specializations = await db.GroupSpecializations
+    .Where(x => x.GroupId == groupId)
+    .Select(x => x.Name)
+    .ToListAsync(ct);
+
+Console.WriteLine("Selected: [" + specialization + "]");
+
+foreach (var name in specializations)
+{
+    Console.WriteLine("Database: [" + name + "]");
+}
+
+      var specializationExists = await db.GroupSpecializations.AnyAsync(
+    x => x.GroupId == groupId &&
+         x.Name.Trim() == specialization, ct);
         if (!specializationExists)
             return BadRequest(new { message = "The selected specialization does not exist in this group." });
 var yeshiva = request.Yeshiva.Trim();
