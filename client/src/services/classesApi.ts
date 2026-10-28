@@ -1,7 +1,6 @@
 import type { GroupClass } from "../types/GroupClass"
 
-const API_URL = "http://localhost:5095/api"
-
+import { API_URL } from "../config/api"
 export async function getClasses(
   groupId: string,
   token: string

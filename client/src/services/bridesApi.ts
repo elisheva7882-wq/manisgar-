@@ -1,7 +1,6 @@
 import type { Bride } from "../types/Bride"
 
-const API_URL = "http://localhost:5095/api"
-
+import { API_URL } from "../config/api"
 export async function getBrides(
   groupId: string,
   token: string

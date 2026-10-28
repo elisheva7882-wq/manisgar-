@@ -1,7 +1,6 @@
 import type { GroupSpecializations } from "../types/GroupSpecializations"
 
-const API_URL = "http://localhost:5095/api"
-
+import { API_URL } from "../config/api"
 export async function getSpecializations(
   groupId: string,
   token: string

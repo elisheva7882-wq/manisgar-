@@ -2,8 +2,7 @@ import type { Blessing } from "../types/Blessing"
 
 
 
-const API_URL = "http://localhost:5095/api"
-
+import { API_URL } from "../config/api"
 export async function sendBlessing(
   groupId: string,
   token: string,
