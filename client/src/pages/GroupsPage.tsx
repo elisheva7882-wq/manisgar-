@@ -29,7 +29,7 @@ export function GroupsPage() {
 
   const {
     data: groups = [],
-    isLoading,
+    
     error,
   } = useQuery({
     queryKey: ["groups"],

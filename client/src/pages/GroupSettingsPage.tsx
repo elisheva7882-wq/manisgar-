@@ -263,7 +263,7 @@ const handleDeleteYeshiva = async (id: number) => {
 
 
 
- const [selectedMember, setSelectedMember] =
+ const [, setSelectedMember] =
     useState<Member | null>(null)
  const updateMemberMutation = useMutation({
     mutationFn: (updatedMember: Member) => {

@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { WeddingPopup } from "./WeddingPopup";
 import logo from "../assets/logo.png";
-import { Button } from "@/components/ui/button";
 function Header(){
     const{token, user,selectedGroup,logoutUser}=useAuth()
     const navigate=useNavigate()

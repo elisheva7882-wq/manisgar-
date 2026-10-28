@@ -3,8 +3,7 @@ import type { Bride } from "../types/Bride"
 import { formatHebrewDate } from "../utils/formatHebrewDate"
 import { useAuth } from "../context/AuthContext"
 import { sendBlessing } from "../services/blessingsApi"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { getMembers } from "../services/membersApi"
+import { useQueryClient } from "@tanstack/react-query"
 
 import {
   CalendarDays,
@@ -29,12 +28,10 @@ export const BrideDetail = ({
   onUpdate,
   onDelete,
 }: BrideDetailsProps) => {
-  const [date, setDate] = useState("")
   const [blessing, setBlessing] = useState("")
 
 const [isEditing, setIsEditing] = useState(false)
 
-  const [editingWeddingDate, setEditingWeddingDate] = useState(false)
     const {token,selectedGroup}=useAuth()
     const queryClient = useQueryClient();
 
@@ -56,20 +53,7 @@ if (!blessing.trim()) return
   
     setBlessing("")
   }
-  const { data: members = [] } = useQuery({
-  queryKey: ["members", selectedGroup?.id],
-  queryFn: () => {
-    if (!token || !selectedGroup) {
-      throw new Error("Missing token or selected group")
-    }
 
-    return getMembers(selectedGroup.id, token)
-  },
-  enabled:
-    !!token &&
-    !!selectedGroup &&
-    selectedGroup.role === "Admin",
-})
 
 
 return (
