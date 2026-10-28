@@ -50,14 +50,17 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("ReactDev", policy =>
-        policy.WithOrigins(
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "manisgar-ten.vercel.app"
-)
-              .AllowAnyHeader()
-              .AllowAnyMethod());
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:5173",
+                "http://localhost:5174",
+                "https://manisgar-ten.vercel.app"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();
@@ -67,14 +70,13 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-// if (!app.Environment.IsDevelopment())
-// {
-//     app.UseHttpsRedirection();
-// }
+app.UseRouting();
 
-app.UseCors("ReactDev");
+app.UseCors("Frontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
