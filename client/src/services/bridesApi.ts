@@ -73,7 +73,7 @@ export async function deleteBrideApi(
   groupId: string,
   token: string,
   brideId: number
-): Promise<Bride> {
+): Promise<void> {
   const response = await fetch(
     `${API_URL}/groups/${groupId}/brides/${brideId}`,
     {
@@ -88,8 +88,6 @@ export async function deleteBrideApi(
   if (!response.ok) {
     throw new Error("Failed to delete bride")
   }
-
-  return response.json()
 }
 
 export async function linkBrideUser(
