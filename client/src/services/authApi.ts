@@ -26,7 +26,11 @@ export async function login(
   )
 
   if (!response.ok) {
-    throw new Error("Failed to login")
+    throw new Error(
+      response.status === 401
+        ? "האימייל או הסיסמה שגויים. אם עדיין לא נרשמת, לחצי על הרשמה."
+        : "לא ניתן להתחבר כרגע. נסי שוב מאוחר יותר."
+    )
   }
 
   return response.json()

@@ -15,15 +15,27 @@ export function LoginPage( ) {
  const { loginUser } = useAuth();
    const navigate=useNavigate()
 
-  const { register, handleSubmit, formState: { errors } ,reset} = useForm<IFormInput>();
+  const { register, handleSubmit, formState: { errors }, reset, setError, clearErrors } = useForm<IFormInput>();
   
   const  onSubmit : SubmitHandler<IFormInput>= async (data ) => {
     const { email, password } = data;
-    const result = await login(email, password);
-   
-    loginUser(result.token,result.user);
-       navigate('/groups')
-    reset();
+    clearErrors("root");
+    try {
+      const result = await login(email, password);
+
+      loginUser(result.token,result.user);
+      navigate('/groups')
+      reset();
+    } catch (error) {
+      setError("root", {
+        type: "server",
+        message: error instanceof TypeError
+          ? "לא ניתן להתחבר לשרת. בדקי את החיבור לאינטרנט ונסי שוב."
+          : error instanceof Error
+            ? error.message
+            : "אירעה שגיאה בהתחברות. נסי שוב.",
+      });
+    }
   }
 
 
@@ -117,6 +129,11 @@ return (
 )}
 </div>
 </div>
+        {errors.root?.message && (
+          <p role="alert" className="mt-4 text-sm text-red-500">
+            {errors.root.message}
+          </p>
+        )}
         <br />
 
        <button
