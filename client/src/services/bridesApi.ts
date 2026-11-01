@@ -1,6 +1,19 @@
 import type { Bride } from "../types/Bride"
 
 import { API_URL } from "../config/api"
+
+function serializeBride(bride: Omit<Bride, "id">) {
+  const weddingTime = bride.weddingTime?.trim() || null
+
+  return JSON.stringify({
+    ...bride,
+    weddingDate: bride.weddingDate?.trim() || null,
+    weddingTime: weddingTime && /^\d{2}:\d{2}$/.test(weddingTime)
+      ? `${weddingTime}:00`
+      : weddingTime,
+  })
+}
+
 export async function getBrides(
   groupId: string,
   token: string
@@ -34,7 +47,7 @@ export async function createBride(
         "content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(bride)
+      body: serializeBride(bride)
     }
   )
 
@@ -58,7 +71,7 @@ export async function updateBrideApi(
         "content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(updatedBride)
+      body: serializeBride(updatedBride)
     }
   )
 
