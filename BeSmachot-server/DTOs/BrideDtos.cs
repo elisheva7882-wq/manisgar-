@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using BeSmachot.Server.Models;
+using BeSmachot.Server.Serialization;
 
 namespace BeSmachot.Server.DTOs;
 
@@ -12,8 +14,8 @@ public record CreateBrideRequest(
     [Required, MaxLength(100)] string Specialization,
     BrideStatus Status,
     [Required, MaxLength(150)] string Yeshiva,
-    DateOnly? WeddingDate,
-    TimeOnly? WeddingTime,
+    [property: JsonConverter(typeof(EmptyStringNullableJsonConverter<DateOnly>))] DateOnly? WeddingDate,
+    [property: JsonConverter(typeof(EmptyStringNullableJsonConverter<TimeOnly>))] TimeOnly? WeddingTime,
     [MaxLength(150)] string? WeddingHall,
     [MaxLength(100)] string? WeddingCity);
 
@@ -26,8 +28,8 @@ public record UpdateBrideRequest(
     [Required, MaxLength(100)] string Specialization,
     BrideStatus Status,
     [Required, MaxLength(150)] string Yeshiva,
-    DateOnly? WeddingDate,
-    TimeOnly? WeddingTime,
+    [property: JsonConverter(typeof(EmptyStringNullableJsonConverter<DateOnly>))] DateOnly? WeddingDate,
+    [property: JsonConverter(typeof(EmptyStringNullableJsonConverter<TimeOnly>))] TimeOnly? WeddingTime,
     [MaxLength(150)] string? WeddingHall,
     [MaxLength(100)] string? WeddingCity);
 
