@@ -3,6 +3,7 @@ import { useState } from "react"
 import { DayPicker } from "@daypicker/hebrew"
 import { HDate, gematriya } from "@hebcal/core"
 import { CalendarDays } from "lucide-react"
+import { hebrewDateLib } from "@/lib/hebrewDateLib"
 import "@daypicker/react/style.css"
 interface HebrewDatePickerProps {
   value: string
@@ -54,6 +55,7 @@ export function HebrewDatePicker({
           className="absolute right-0 z-50 mt-2 w-max max-w-[calc(100vw-2rem)] rounded-2xl border bg-background p-3 shadow-xl"
         >
           <DayPicker
+  dateLib={hebrewDateLib}
   mode="single"
   selected={selected}
   onSelect={handleSelect}
